@@ -1,7 +1,7 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import axios from "axios";
-import '../App.css'// adding css 
+import '../App.css'
 
 export default function AddSchool() {
   const { register, handleSubmit, reset, formState: { errors } } = useForm();

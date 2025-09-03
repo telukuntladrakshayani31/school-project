@@ -5,7 +5,7 @@ const db = require("../db");
 
 const router = express.Router();
 
-// Multer storage
+
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
     cb(null, "public/schoolImages");
@@ -16,7 +16,7 @@ const storage = multer.diskStorage({
 });
 const upload = multer({ storage });
 
-// Add school
+
 router.post("/", upload.single("image"), (req, res) => {
   const { name, address, city, state, contact, email_id } = req.body;
   const imagePath = req.file ? `/schoolImages/${req.file.filename}` : null;
@@ -31,7 +31,7 @@ router.post("/", upload.single("image"), (req, res) => {
   });
 });
 
-// Get schools
+
 router.get("/", (req, res) => {
   db.query("SELECT * FROM schools", (err, result) => {
     if (err) return res.status(500).json({ error: err });
